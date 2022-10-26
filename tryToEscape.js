@@ -49,7 +49,7 @@ window.addEventListener('DOMContentLoaded', () => {
     camera.keysRight = [68];
     const footstepSound = new BABYLON.Sound("footstep", "./sounds/footstep.wav", scene)
     camera.onCollide = function (collidedMesh) {
-        console.log("ouck");
+        //console.log("ouck");
         if (!footstepSound.isPlaying) {
             footstepSound.play();
         }

@@ -166,10 +166,14 @@ function createDoor(openRotation, leftHinge, isLocked = false) {
         const closeDoorSound = new BABYLON.Sound("closeDoor", "./sounds/close_door.wav", scene);
         const lockedDoorSound = new BABYLON.Sound("lockedDoor", "./sounds/locked_door.wav", scene);
 
+
+
+
         scene.onPointerObservable.add(pointerInfo => {
             if (pointerInfo.type == BABYLON.PointerEventTypes.POINTERDOWN
                 && (hinge.rotation.y == 0 || hinge.rotation.y == openRotation)) {
-                let mesh = scene.meshUnderPointer;
+                const pickInfo = scene.pick(scene.pointerX, scene.pointerY);
+                let mesh = pickInfo.pickedMesh;
                 if (mesh === door) {
                     if (!hinge.isLocked) {
                         if (hinge.rotation.y == 0) {
